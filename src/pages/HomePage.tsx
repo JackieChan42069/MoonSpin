@@ -32,7 +32,7 @@ const trustFeatures = [
   {
     icon: Gift,
     title: 'Generous Bonuses',
-    description: 'Up to 200% welcome bonus on first deposit',
+    description: 'Up to 20% welcome bonus on first deposit',
   },
 ];
 

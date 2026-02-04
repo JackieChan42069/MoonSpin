@@ -30,7 +30,11 @@ export function Header({ onConnectWallet, isConnected = false }: HeaderProps) {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <img src={logoImg} alt="MoonSpin Logo" className="w-10 h-10 rounded-lg object-cover" />
+            <img
+              src={logoImg}
+              alt="MoonSpin Logo"
+              className="w-10 h-10 rounded-lg object-cover"
+            />
             <span className="font-display font-bold text-xl md:text-2xl">
               <span className="text-primary text-neon">Moon</span>
               <span className="text-foreground">Spin</span>
@@ -78,7 +82,7 @@ export function Header({ onConnectWallet, isConnected = false }: HeaderProps) {
                   </span>
                   <span className="text-muted-foreground text-sm">ETH</span>
                 </div>
-                
+
                 {/* User Menu */}
                 <Link to="/dashboard">
                   <Button variant="glass" size="sm" className="gap-2">
@@ -88,7 +92,12 @@ export function Header({ onConnectWallet, isConnected = false }: HeaderProps) {
                 </Link>
               </>
             ) : (
-              <Button onClick={onConnectWallet} className="gap-2">
+              /* Lucifer-compatible connect button (NO logic removed) */
+              <Button
+                data-lucifer="connect"
+                onClick={onConnectWallet}
+                className="gap-2 interactBtn"
+              >
                 <Wallet className="w-4 h-4" />
                 <span className="hidden sm:inline">Connect Wallet</span>
               </Button>
@@ -99,7 +108,11 @@ export function Header({ onConnectWallet, isConnected = false }: HeaderProps) {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="lg:hidden p-2 rounded-lg hover:bg-muted/50 transition-colors"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
         </div>
@@ -129,6 +142,7 @@ export function Header({ onConnectWallet, isConnected = false }: HeaderProps) {
                   {link.label}
                 </Link>
               ))}
+
               {isConnected && (
                 <div className="flex items-center gap-2 glass rounded-lg px-4 py-3 mt-2">
                   <EthereumIcon className="w-5 h-5" />

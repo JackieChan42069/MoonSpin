@@ -14,10 +14,10 @@ const promotionCategories = [
 const allPromotions = [
   {
     id: '1',
-    title: '200% Welcome Bonus',
-    description: 'New players get up to 5 ETH bonus on their first deposit. Minimum deposit 0.1 ETH. Wagering requirement: 40x.',
+    title: '25% Welcome Bonus up to 0.2 ETH',
+    description: 'New players receive a 25% match on their first deposit, up to 0.2 ETH. Minimum deposit 0.02 ETH. Wagering requirement: 10× on the bonus amount.',
     category: 'Welcome Bonus',
-    terms: '18+. New players only. Min deposit 0.1 ETH. 40x wagering on bonus amount.',
+    terms: '18+. New players only. Minimum deposit 0.05 ETH. Bonus applies to first deposit only. Wagering requirement is 10× the bonus amount. Terms apply.',
     cta: 'Claim Now',
   },
   {

@@ -144,8 +144,8 @@ export const mockTransactions: Transaction[] = [
 export const mockPromotions: Promotion[] = [
   {
     id: '1',
-    title: '200% Welcome Bonus',
-    description: 'Get up to 5 ETH on your first deposit. New players only.',
+    title: '25% Welcome Bonus',
+    description: 'New players receive a 25% match on their first deposit. Min deposit 0.02 ETH. T&Cs apply.',
     image: '/placeholder.svg',
     cta: 'Claim Now',
   },
