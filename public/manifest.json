@@ -1,0 +1,40 @@
+{
+  "name": "MoonSpin Jackpot - Crypto Casino",
+  "short_name": "MoonSpin",
+  "description": "Play provably fair crypto casino games with instant payouts. Transparent gaming on the blockchain.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/A_digital_illustration_for_Moonspin_Jackpot_is_s.png",
+      "sizes": "540x720",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "categories": ["games", "entertainment"],
+  "screenshots_alt": "MoonSpin crypto casino gaming platform",
+  "orientation": "portrait-primary"
+}

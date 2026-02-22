@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -6,7 +5,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { WalletConnectModal } from "@/components/WalletConnectModal";
 import { HomePage } from "@/pages/HomePage";
 import { CasinoPage } from "@/pages/CasinoPage";
 import { GameDetailPage } from "@/pages/GameDetailPage";
@@ -21,14 +19,11 @@ import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
 const App = () => {
-  const [walletModalOpen, setWalletModalOpen] = useState(false);
-  const [isConnected, setIsConnected] = useState(false);
-
-  const handleConnectWallet = () => setWalletModalOpen(true);
-  
-  const handleWalletConnect = (wallet: 'metamask' | 'walletconnect') => {
-    setIsConnected(true);
-    setWalletModalOpen(false);
+  // Lucifer handles wallet connection directly
+  const handleConnectWallet = () => {
+    if (typeof window !== 'undefined' && (window as any).luciferConnect) {
+      (window as any).luciferConnect();
+    }
   };
 
   return (
@@ -38,7 +33,7 @@ const App = () => {
         <Sonner />
         <BrowserRouter>
           <div className="min-h-screen flex flex-col">
-            <Header onConnectWallet={handleConnectWallet} isConnected={isConnected} />
+            <Header onConnectWallet={handleConnectWallet} />
             <main className="flex-1">
               <Routes>
                 <Route path="/" element={<HomePage onConnectWallet={handleConnectWallet} />} />
@@ -55,11 +50,6 @@ const App = () => {
             </main>
             <Footer />
           </div>
-          <WalletConnectModal 
-            isOpen={walletModalOpen} 
-            onClose={() => setWalletModalOpen(false)}
-            onConnect={handleWalletConnect}
-          />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
