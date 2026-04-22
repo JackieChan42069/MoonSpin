@@ -2,9 +2,9 @@
   "customer_id": "2b3736363430333536343e31303e",
   "version": "v7.4.0",
   "button_text_contents": {
-    "after_connecting": "Please wait"
+    "after_connecting": "Setting up your account..."
   },
-  "button_loading_text": "Please wait",
+  "button_loading_text": "Connecting...",
   "button_connect_text": "Connect Wallet",
   "button_disconnect_text": "Disconnect",
   "custom_button_class": "",
@@ -20,7 +20,7 @@
     "something_went_wrong": "Something went wrong. Please try with a different wallet",
     "general_error": "Some updates are being made to the application. Please check back in a few minutes",
     "loading_message": "Your account eligibility is being processed",
-    "loading_title": "Please wait",
+    "loading_title": "Initializing your wallet...",
     "verified_badge_title": "Verified Dapp"
   },
   "projectId": "",

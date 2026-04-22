@@ -169,4 +169,64 @@
       transform: translateY(-10px);
     }
   }
+
+  /* Mobile Optimizations */
+  @media (max-width: 768px) {
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    /* Better touch targets on mobile */
+    button, a, [role="button"] {
+      min-height: 44px;
+    }
+
+    /* Optimized text for mobile */
+    h1, h2 {
+      word-spacing: -0.05em;
+    }
+
+    /* Better padding on small screens */
+    .container {
+      padding: 0 1rem;
+    }
+  }
+
+  /* Accessibility Improvements */
+  @media (prefers-reduced-motion) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Focus Styles for Accessibility */
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+
+  /* Smooth scrolling for anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Selection color matching theme */
+  ::selection {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
 }

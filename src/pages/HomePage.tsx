@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { GameCard } from '@/components/GameCard';
 import { PromotionCarousel } from '@/components/PromotionCarousel';
+import { RecentWins } from '@/components/RecentWins';
+import { TrustSignals } from '@/components/TrustSignals';
 import { ShieldCheckIcon, ProvablyFairIcon } from '@/components/icons';
 import { mockGames } from '@/data/mockData';
 
@@ -132,6 +134,47 @@ export function HomePage({ onConnectWallet }: HomePageProps) {
         </div>
       </section>
 
+      {/* Recent Wins Section */}
+      <section className="py-12 md:py-16">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center"
+          >
+            {/* Left Content */}
+            <div className="lg:col-span-1">
+              <h2 className="font-display font-bold text-2xl md:text-3xl text-foreground mb-4">
+                Watch the Action
+              </h2>
+              <p className="text-muted-foreground mb-6 leading-relaxed">
+                See real-time wins from our playing community. These are actual players winning actual crypto.
+              </p>
+              <div className="space-y-3">
+                <div className="flex items-center gap-3 text-sm text-foreground">
+                  <div className="w-2 h-2 rounded-full bg-primary" />
+                  <span>Live player updates</span>
+                </div>
+                <div className="flex items-center gap-3 text-sm text-foreground">
+                  <div className="w-2 h-2 rounded-full bg-primary" />
+                  <span>Provably verified wins</span>
+                </div>
+                <div className="flex items-center gap-3 text-sm text-foreground">
+                  <div className="w-2 h-2 rounded-full bg-primary" />
+                  <span>Updated every 5 seconds</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Recent Wins Card */}
+            <div className="lg:col-span-2">
+              <RecentWins />
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Featured Games */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
@@ -158,40 +201,8 @@ export function HomePage({ onConnectWallet }: HomePageProps) {
         </div>
       </section>
 
-      {/* Trust Features */}
-      <section className="py-12 md:py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="font-display font-bold text-2xl md:text-3xl text-foreground mb-4">
-              Why Choose NeonWager?
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Built for transparency, designed for winners. Every feature crafted to give you the best gaming experience.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {trustFeatures.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="glass-hover rounded-2xl p-6 text-center"
-              >
-                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                  <feature.icon className="w-7 h-7 text-primary" />
-                </div>
-                <h3 className="font-display font-semibold text-lg text-foreground mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-muted-foreground text-sm">{feature.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Trust Signals Section */}
+      <TrustSignals />
 
       {/* CTA Section */}
       <section className="py-16 md:py-24">
