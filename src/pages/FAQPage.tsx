@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, Search } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { useSchemaScript } from '@/hooks/use-schema-script';
 
 const faqCategories = [
   {
@@ -89,6 +90,45 @@ export function FAQPage() {
     ),
   })).filter((cat) => cat.questions.length > 0);
 
+  // Generate FAQ schema for search engines
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqCategories.flatMap((cat) =>
+      cat.questions.map((item) => ({
+        "@type": "Question",
+        "name": item.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": item.a
+        }
+      }))
+    )
+  };
+
+  // BreadcrumbList schema for navigation
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://moonspin.space"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "FAQ",
+        "item": "https://moonspin.space/faq"
+      }
+    ]
+  };
+
+  useSchemaScript(faqSchema, 'faq-page');
+  useSchemaScript(breadcrumbSchema, 'breadcrumb');
+
   return (
     <div className="min-h-screen pt-20 md:pt-24 pb-16">
       <div className="container mx-auto px-4 max-w-4xl">
@@ -103,7 +143,7 @@ export function FAQPage() {
               Frequently Asked Questions
             </h1>
             <p className="text-muted-foreground text-lg mb-8">
-              Find answers to common questions about NeonWager.
+              Find answers to common questions about MoonSpin crypto casino gaming.
             </p>
 
             {/* Search */}

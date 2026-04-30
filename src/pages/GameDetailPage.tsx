@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { mockGames } from '@/data/mockData';
 import { ProvablyFairIcon } from '@/components/icons';
+import { useSchemaScript } from '@/hooks/use-schema-script';
 
 const categoryColors = {
   slots: 'from-purple-500 to-pink-500',
@@ -27,6 +28,59 @@ export function GameDetailPage() {
   const { id } = useParams();
   const game = mockGames.find((g) => g.id === id) || mockGames[0];
   const [betAmount, setBetAmount] = useState(game.minBet);
+
+  // Game schema for search engines
+  const gameSchema = {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": game.name,
+    "description": `Play ${game.name}, a provably fair ${game.category} game on MoonSpin. RTP: ${game.rtp}%. Min bet: ${game.minBet} ETH, Max bet: ${game.maxBet} ETH.`,
+    "image": game.image,
+    "gameCategory": game.category,
+    "url": `https://moonspin.space/game/${game.id}`,
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "ETH",
+      "price": "0",
+      "description": "Provably fair blockchain gaming"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": game.rtp,
+      "bestRating": "100",
+      "worstRating": "0",
+      "ratingCount": game.players || 1
+    }
+  };
+
+  // BreadcrumbList schema for navigation
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://moonspin.space"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Casino",
+        "item": "https://moonspin.space/casino"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": game.name,
+        "item": `https://moonspin.space/game/${game.id}`
+      }
+    ]
+  };
+
+  useSchemaScript(gameSchema, 'game-detail');
+  useSchemaScript(breadcrumbSchema, 'breadcrumb');
 
   const handleBetChange = (delta: number) => {
     const newBet = Math.max(game.minBet, Math.min(game.maxBet, betAmount + delta));

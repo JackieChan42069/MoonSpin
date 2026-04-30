@@ -3,6 +3,7 @@ import { Shield, Lock, CheckCircle, Hash, RefreshCw, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ProvablyFairIcon } from '@/components/icons';
+import { useSchemaScript } from '@/hooks/use-schema-script';
 
 const steps = [
   {
@@ -37,6 +38,28 @@ const benefits = [
 ];
 
 export function ProvablyFairPage() {
+  // BreadcrumbList schema for navigation
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://moonspin.space"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Provably Fair",
+        "item": "https://moonspin.space/provably-fair"
+      }
+    ]
+  };
+
+  useSchemaScript(breadcrumbSchema, 'breadcrumb');
+
   return (
     <div className="min-h-screen pt-20 md:pt-24 pb-16">
       <div className="container mx-auto px-4">

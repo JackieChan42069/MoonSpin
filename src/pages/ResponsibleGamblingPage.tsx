@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Shield, AlertTriangle, Clock, User, FileText, HelpCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { useSchemaScript } from '@/hooks/use-schema-script';
 
 const responsibleGamblingTools = [
   {
@@ -45,6 +46,28 @@ const kycSteps = [
 ];
 
 export function ResponsibleGamblingPage() {
+  // BreadcrumbList schema for navigation
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://moonspin.space"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Responsible Gambling",
+        "item": "https://moonspin.space/responsible-gambling"
+      }
+    ]
+  };
+
+  useSchemaScript(breadcrumbSchema, 'breadcrumb');
+
   return (
     <div className="min-h-screen pt-20 md:pt-24 pb-16">
       <div className="container mx-auto px-4">

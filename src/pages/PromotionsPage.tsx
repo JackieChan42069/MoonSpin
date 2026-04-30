@@ -3,6 +3,7 @@ import { Gift, Clock, Star, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { mockPromotions } from '@/data/mockData';
+import { useSchemaScript } from '@/hooks/use-schema-script';
 
 const promotionCategories = [
   { icon: Gift, label: 'Welcome Bonus', color: 'from-primary to-primary/60' },
@@ -47,6 +48,28 @@ const allPromotions = [
 ];
 
 export function PromotionsPage() {
+  // BreadcrumbList schema for navigation
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://moonspin.space"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Promotions",
+        "item": "https://moonspin.space/promotions"
+      }
+    ]
+  };
+
+  useSchemaScript(breadcrumbSchema, 'breadcrumb');
+
   return (
     <div className="min-h-screen pt-20 md:pt-24 pb-16">
       <div className="container mx-auto px-4">

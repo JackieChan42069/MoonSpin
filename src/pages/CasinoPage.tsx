@@ -4,10 +4,33 @@ import { Search, SlidersHorizontal } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { GameCard } from '@/components/GameCard';
 import { mockGames, categories } from '@/data/mockData';
+import { useSchemaScript } from '@/hooks/use-schema-script';
 
 export function CasinoPage() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
+
+  // BreadcrumbList schema for navigation
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://moonspin.space"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Casino",
+        "item": "https://moonspin.space/casino"
+      }
+    ]
+  };
+
+  useSchemaScript(breadcrumbSchema, 'breadcrumb');
 
   const filteredGames = mockGames.filter((game) => {
     const matchesCategory = selectedCategory === 'all' || game.category === selectedCategory;
@@ -18,13 +41,18 @@ export function CasinoPage() {
   return (
     <div className="min-h-screen pt-20 md:pt-24 pb-16">
       <div className="container mx-auto px-4">
-        {/* Header */}
+        {/* Header with breadcrumb context */}
         <div className="mb-8">
+          <nav className="text-sm text-muted-foreground mb-4 flex items-center gap-2">
+            <a href="/" className="hover:text-primary transition-colors">Home</a>
+            <span>/</span>
+            <span className="text-foreground">Casino</span>
+          </nav>
           <h1 className="font-display font-bold text-3xl md:text-4xl text-foreground mb-2">
-            Casino Lobby
+            Provably Fair Casino Lobby
           </h1>
           <p className="text-muted-foreground">
-            Choose from our selection of provably fair games
+            Choose from our selection of verified-fair crypto games. All games are provably fair and have been audited for transparency.
           </p>
         </div>
 
