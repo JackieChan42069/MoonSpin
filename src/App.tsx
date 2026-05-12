@@ -7,6 +7,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { HomePage } from "@/pages/HomePage";
 import { CasinoPage } from "@/pages/CasinoPage";
+import { SportsPage } from "@/pages/SportsPage";
 import { GameDetailPage } from "@/pages/GameDetailPage";
 import { DashboardPage } from "@/pages/DashboardPage";
 import { PromotionsPage } from "@/pages/PromotionsPage";
@@ -14,6 +15,7 @@ import { ProvablyFairPage } from "@/pages/ProvablyFairPage";
 import { ResponsibleGamblingPage } from "@/pages/ResponsibleGamblingPage";
 import { FAQPage } from "@/pages/FAQPage";
 import { TermsPage } from "@/pages/TermsPage";
+import { LiveChatWidget } from "@/components/LiveChatWidget";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -38,6 +40,7 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<HomePage onConnectWallet={handleConnectWallet} />} />
                 <Route path="/casino" element={<CasinoPage />} />
+                <Route path="/sports" element={<SportsPage />} />
                 <Route path="/game/:id" element={<GameDetailPage />} />
                 <Route path="/dashboard" element={<DashboardPage />} />
                 <Route path="/promotions" element={<PromotionsPage />} />
@@ -49,6 +52,7 @@ const App = () => {
               </Routes>
             </main>
             <Footer />
+            <LiveChatWidget />
           </div>
         </BrowserRouter>
       </TooltipProvider>

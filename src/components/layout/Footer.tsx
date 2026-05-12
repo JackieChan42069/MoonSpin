@@ -11,6 +11,7 @@ const footerLinks = {
     { label: 'Crash', path: '/casino?category=crash' },
     { label: 'Dice', path: '/casino?category=dice' },
     { label: 'Live Casino', path: '/casino?category=live' },
+    { label: 'Sports', path: '/sports' },
   ],
   info: [
     { label: 'How It Works', path: '/provably-fair' },

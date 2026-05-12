@@ -16,6 +16,7 @@ interface HeaderProps {
 const navLinks = [
   { path: '/', label: 'Home' },
   { path: '/casino', label: 'Casino' },
+  { path: '/sports', label: 'Sports' },
   { path: '/promotions', label: 'Promotions' },
   { path: '/provably-fair', label: 'Provably Fair' },
 ];

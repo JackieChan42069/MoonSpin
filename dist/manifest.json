@@ -9,9 +9,9 @@
   "scope": "/",
   "icons": [
     {
-      "src": "/favicon.ico",
-      "sizes": "32x32",
-      "type": "image/x-icon"
+      "src": "/favicon.png",
+      "sizes": "64x64",
+      "type": "image/png"
     },
     {
       "src": "/apple-touch-icon.png",

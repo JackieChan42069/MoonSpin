@@ -37,6 +37,87 @@ export interface Promotion {
   endDate?: Date;
 }
 
+export interface SportsMatch {
+  id: string;
+  sport: 'soccer' | 'basketball' | 'tennis' | 'all';
+  league: string;
+  homeTeam: string;
+  awayTeam: string;
+  homeScore: number;
+  awayScore: number;
+  startTime: Date;
+  status: 'scheduled' | 'in_progress' | 'finished';
+  odds: {
+    home: number;
+    draw?: number;
+    away: number;
+  };
+  updatedAt: Date;
+}
+
+export const sportsCategories = [
+  { id: 'all', label: 'All Sports' },
+  { id: 'live', label: 'Live Now' },
+  { id: 'soccer', label: 'Soccer' },
+  { id: 'basketball', label: 'Basketball' },
+  { id: 'tennis', label: 'Tennis' },
+];
+
+export const mockMatches: SportsMatch[] = [
+  {
+    id: 's1',
+    sport: 'soccer',
+    league: 'Champions League',
+    homeTeam: 'Galactic FC',
+    awayTeam: 'Astro United',
+    homeScore: 2,
+    awayScore: 1,
+    startTime: new Date(Date.now() - 1000 * 60 * 12),
+    status: 'in_progress',
+    odds: { home: 1.85, draw: 3.20, away: 4.10 },
+    updatedAt: new Date(),
+  },
+  {
+    id: 's2',
+    sport: 'basketball',
+    league: 'Space League',
+    homeTeam: 'Lunar Lakers',
+    awayTeam: 'Orbiters',
+    homeScore: 88,
+    awayScore: 85,
+    startTime: new Date(Date.now() - 1000 * 60 * 35),
+    status: 'in_progress',
+    odds: { home: 1.75, away: 2.05 },
+    updatedAt: new Date(),
+  },
+  {
+    id: 's3',
+    sport: 'tennis',
+    league: 'Galactic Open',
+    homeTeam: 'Nova Serena',
+    awayTeam: 'Mira Williams',
+    homeScore: 1,
+    awayScore: 2,
+    startTime: new Date(Date.now() + 1000 * 60 * 40),
+    status: 'scheduled',
+    odds: { home: 2.20, away: 1.70 },
+    updatedAt: new Date(),
+  },
+  {
+    id: 's4',
+    sport: 'soccer',
+    league: 'Premier Orbit',
+    homeTeam: 'Meteor FC',
+    awayTeam: 'Astro Rovers',
+    homeScore: 0,
+    awayScore: 0,
+    startTime: new Date(Date.now() + 1000 * 60 * 75),
+    status: 'scheduled',
+    odds: { home: 2.45, draw: 3.10, away: 2.95 },
+    updatedAt: new Date(),
+  },
+];
+
 export const mockGames: Game[] = [
   {
     id: '1',
